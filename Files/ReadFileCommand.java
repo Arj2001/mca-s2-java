@@ -2,31 +2,29 @@ package Files;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
-public class RdfCopy{
-
+public class ReadFileCommand {
+    
     public static void main(String[] args) throws IOException{
-
-        FileInputStream f1 = null;
-        FileOutputStream f2 = null;
+        FileInputStream f;
+        Scanner scan = new Scanner(System.in);
+        String file = scan.nextLine();
+        
         try {
-            f1 = new FileInputStream("Files/sample.txt");
-            f2 = new FileOutputStream("Files/samplecopy.txt");
+            f = new FileInputStream("Files/"+file);
             int c;
             do{
-                c = f1.read();
+                c = f.read();
                 if(c!=-1){
-                    f2.write(c);
+                    System.out.print((char)c);
                 }
             }while(c!=-1);
-            System.out.println("File copied successfully");
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             return;
         }
-        f1.close();
-        f2.close();
+        f.close();
     }
 }
