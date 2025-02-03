@@ -21,6 +21,8 @@ public class MultipleException {
             System.out.println("Null pointer exception");
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Array index out of bound");
+        }finally{
+            System.out.println("Finally block executed");
         }
     }
 }

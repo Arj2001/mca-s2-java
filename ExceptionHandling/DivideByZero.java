@@ -14,6 +14,7 @@ public class DivideByZero {
             int val = a/b;
             System.out.println("The quotient is "+ val);
         } catch (ArithmeticException ae) {
+            
             System.out.println("Divide by zero is not possible");
         }
     }
