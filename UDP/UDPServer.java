@@ -10,8 +10,9 @@ public class UDPServer {
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
         while(true){
             socket.receive(packet);
-            if(new String(packet.getData()).equals("close")) break;
-            System.out.println("Received: "+new String(packet.getData()));
+            String received = new String(packet.getData(), 0, packet.getLength());
+            if(received.equals("close")) break;
+            System.out.println("Received: "+received);
             socket.send(packet); //echo back
         }
         socket.close();

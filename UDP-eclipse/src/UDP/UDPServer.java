@@ -1,4 +1,5 @@
 package UDP;
+
 import java.io.IOException;
 import java.net.*;
 
@@ -9,9 +10,9 @@ public class UDPServer {
         DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
         while(true){
             socket.receive(packet);
-            String message =  new String(packet.getData()).trim();
-            if(message.equals("close")) break;
-            System.out.println("Received: "+new String(packet.getData()));
+            String received = new String(packet.getData(), 0, packet.getLength());
+            if(received.equals("close")) break;
+            System.out.println("Received: "+received);
             socket.send(packet); //echo back
         }
         socket.close();
